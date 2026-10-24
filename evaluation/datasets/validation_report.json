@@ -1,0 +1,48 @@
+{
+  "status": "passed",
+  "errors": [],
+  "counts": {
+    "dev": 120,
+    "test": 200
+  },
+  "evidence_spans_checked": 377,
+  "evidence_extraction": "Missing extractor: pypdfium2 get_text_range; extractor=pymupdf: Page.get_text; NFKC and whitespace removal after extraction.",
+  "unique_gold_pages": {
+    "dev": 60,
+    "test": 100
+  },
+  "cross_split_gold_page_overlap": [],
+  "cross_split_topic_overlap": [],
+  "duplicate_exact_questions": 0,
+  "visual_spot_check_record": {
+    "reviewed_date": "2026-10-22",
+    "reviewer": "assistant, not independent human review",
+    "pages": [
+      {
+        "source": "knowledge_db/book/d2l-zh-pytorch.pdf",
+        "page_number": 355
+      },
+      {
+        "source": "knowledge_db/book/d2l-zh-pytorch.pdf",
+        "page_number": 424
+      },
+      {
+        "source": "knowledge_db/book/d2l-zh-pytorch.pdf",
+        "page_number": 595
+      },
+      {
+        "source": "knowledge_db/book/pumpkin_book.pdf",
+        "page_number": 84
+      }
+    ]
+  },
+  "offline_only": true,
+  "model_calls": 0,
+  "limitation": "Source/offset validation is not independent review of answer correctness, semantic duplicates or real-world representativeness.",
+  "validated_date": "2026-10-24",
+  "dataset_sha256": {
+    "dev": "3a3f5a403a291994692e0a12051102268711476fa86088ef8350b5f09441894c",
+    "test": "cec42e53430a8f0c1b4181ef48dd30a8957bca6999a1a0a1302dcd7d6d8c290d"
+  },
+  "all_original_cases_preserved": true
+}

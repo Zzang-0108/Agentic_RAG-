@@ -1,0 +1,43 @@
+# Secrets; only the empty configuration template is public.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local corpus; keep instructions and the expected input directory.
+/knowledge_db/*
+!/knowledge_db/README.md
+!/knowledge_db/book/
+/knowledge_db/book/*
+!/knowledge_db/book/.gitkeep
+
+# Model weights, derived indexes and private work snapshots.
+/embed_cache/
+/embed_cache_books/
+/embed_cache_optimized/
+/model_cache/
+/chroma_rag_db/
+/.work_backups/
+
+# Generated evaluation outputs.
+/evaluation/reports/
+
+# Python and notebooks.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Editor and operating system.
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

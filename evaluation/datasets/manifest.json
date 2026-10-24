@@ -1,0 +1,117 @@
+{
+  "authored_date": "2026-10-21",
+  "completed_date": "2026-10-22",
+  "total": 320,
+  "split_statistics": {
+    "dev": {
+      "total": 120,
+      "categories": {
+        "clarification": 8,
+        "cross_book": 12,
+        "direct": 4,
+        "fact": 36,
+        "multi_evidence": 28,
+        "paraphrase": 16,
+        "unanswerable": 16
+      },
+      "evidence_cases": 92,
+      "knowledge_topics": 34,
+      "multi_page_cases": 30,
+      "cross_book_cases": 12,
+      "source_case_counts": {
+        "knowledge_db/book/EasyRL_v1.0.6.pdf": 22,
+        "knowledge_db/book/d2l-zh-pytorch.pdf": 34,
+        "knowledge_db/book/pumpkin_book.pdf": 26,
+        "knowledge_db/book/v1.pdf": 22
+      },
+      "diagnostic_tags": {
+        "adjacent_page_evidence": 9,
+        "code_reasoning": 9,
+        "concept_disambiguation": 2,
+        "cross_book": 4,
+        "explicit_missing_information": 8,
+        "false_premise": 10,
+        "multi_page": 11,
+        "numerical": 2,
+        "scenario_reasoning": 3
+      }
+    },
+    "test": {
+      "total": 200,
+      "categories": {
+        "clarification": 10,
+        "cross_book": 16,
+        "direct": 10,
+        "fact": 67,
+        "multi_evidence": 51,
+        "paraphrase": 24,
+        "unanswerable": 22
+      },
+      "evidence_cases": 158,
+      "knowledge_topics": 56,
+      "multi_page_cases": 60,
+      "cross_book_cases": 16,
+      "source_case_counts": {
+        "knowledge_db/book/EasyRL_v1.0.6.pdf": 45,
+        "knowledge_db/book/d2l-zh-pytorch.pdf": 59,
+        "knowledge_db/book/pumpkin_book.pdf": 36,
+        "knowledge_db/book/v1.pdf": 34
+      },
+      "diagnostic_tags": {
+        "adjacent_page_evidence": 18,
+        "algorithm_steps": 4,
+        "code_reasoning": 9,
+        "concept_disambiguation": 2,
+        "cross_book": 4,
+        "explicit_missing_information": 8,
+        "false_premise": 23,
+        "formula_reasoning": 8,
+        "multi_page": 22,
+        "numerical": 10,
+        "scenario_reasoning": 5,
+        "self_contained": 4,
+        "source_specific": 2
+      }
+    }
+  },
+  "source_files": {
+    "knowledge_db/book/d2l-zh-pytorch.pdf": {
+      "sha256": "db978acf18dac28f4de1412839ca1f804302c6a29b971b024595369afa69cbea",
+      "pages": 797
+    },
+    "knowledge_db/book/pumpkin_book.pdf": {
+      "sha256": "371e426890ae8246bca319e433b1d54d0610f015de42df8385cd8eeb610225b1",
+      "pages": 196
+    },
+    "knowledge_db/book/EasyRL_v1.0.6.pdf": {
+      "sha256": "cc8352af93a67404d42fa44ae4cfbae906e4edc6bc0a41fc00f8db3594f99ad0",
+      "pages": 189
+    },
+    "knowledge_db/book/v1.pdf": {
+      "sha256": "9af799281348db0f4b2825450f8c527e54c3b568cbbf69049603ac255cab7396",
+      "pages": 187
+    }
+  },
+  "normalization": "Unicode NFKC; remove whitespace",
+  "dataset_sha256": {
+    "dev": "3a3f5a403a291994692e0a12051102268711476fa86088ef8350b5f09441894c",
+    "test": "cec42e53430a8f0c1b4181ef48dd30a8957bca6999a1a0a1302dcd7d6d8c290d"
+  },
+  "independent_human_review": false,
+  "frozen_test_warning": "If test results have guided tuning, those cases are no longer unseen. Consolidating files does not create a fresh holdout set.",
+  "split_policy": "Keep each annotated topic and cross-book combination in one split; no shared gold pages or topic IDs between dev and test. Broader concepts may still be related.",
+  "consolidated_date": "2026-10-24",
+  "evidence_extractors": {
+    "default": {
+      "name": "pypdfium2",
+      "version": "5.13.0",
+      "method": "PdfTextPage.get_text_range"
+    },
+    "pymupdf": {
+      "name": "PyMuPDF",
+      "version": "1.28.2",
+      "method": "Page.get_text"
+    }
+  },
+  "case_id_policy": "Preserve all existing case IDs for comparison with historical evaluation reports."
+}

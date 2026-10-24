@@ -1,0 +1,335 @@
+{
+  "snapshot_date_local": "2026-10-22",
+  "status": "diagnosis_complete_remediation_not_implemented",
+  "source_runs": {
+    "previous": "run_20261022T051059_048567Z",
+    "current": "run_20261022T123627_433409Z"
+  },
+  "source_sha256": {
+    "previous": {
+      "summary.json": "79f89be8446964db73b24d88d6d4e3cbff1a04810f53b73ef783501f099f1b95",
+      "details.jsonl": "f217658afabec2ff64e963c0d5ba5a8805e398b6127cf06ed9caf89cd3f83156"
+    },
+    "current": {
+      "summary.json": "870c76e00ec9327cdda641043e1235a9854f96281af3e3bb77a1f31fff38b19c",
+      "details.jsonl": "1ab10ddced22bbd92c112ddbbad18a3551e73474e13843f479fba6597b6c9019"
+    }
+  },
+  "controls": {
+    "both_completed": true,
+    "same_dataset_hash": true,
+    "same_chat_model": true,
+    "same_judge_model": true,
+    "same_index_cache_key": true,
+    "changed_target_sources": [
+      "rag.py",
+      "rag_core/config.py",
+      "rag_core/evidence.py",
+      "rag_core/graph.py",
+      "rag_core/prompts.py",
+      "rag_core/structured.py"
+    ]
+  },
+  "metrics": {
+    "previous_agent": {
+      "n": 120,
+      "correct": 99,
+      "workflow_errors": 3,
+      "knowledge_n": 92,
+      "knowledge_correct": 75,
+      "answerable_n": 96,
+      "false_abstentions": 6,
+      "p50_ms": 29499.649550001777,
+      "p95_ms": 64908.64334999915,
+      "first_context_page_hit_at_5": 0.75,
+      "first_context_page_recall_at_5": 0.7028985507246377,
+      "stop_reasons": {
+        "complete": 65,
+        "retrieval_budget_exhausted": 15,
+        "no_new_query": 18,
+        "direct": 8,
+        "needs_input": 11,
+        "evidence_check_error": 3
+      }
+    },
+    "current_rag": {
+      "n": 120,
+      "correct": 61,
+      "workflow_errors": 29,
+      "knowledge_n": 92,
+      "knowledge_correct": 38,
+      "answerable_n": 96,
+      "false_abstentions": 27,
+      "p50_ms": 6426.889800000936,
+      "p95_ms": 11186.68254499571,
+      "first_context_page_hit_at_5": 0.7608695652173914,
+      "first_context_page_recall_at_5": 0.7137681159420289,
+      "stop_reasons": {
+        "single_pass": 76,
+        "generation_validation_error": 29,
+        "generation_abstain": 15
+      }
+    },
+    "current_agent": {
+      "n": 120,
+      "correct": 37,
+      "workflow_errors": 69,
+      "knowledge_n": 92,
+      "knowledge_correct": 14,
+      "answerable_n": 96,
+      "false_abstentions": 74,
+      "p50_ms": 46829.469650001556,
+      "p95_ms": 106950.03939500234,
+      "first_context_page_hit_at_5": 0.75,
+      "first_context_page_recall_at_5": 0.7028985507246377,
+      "stop_reasons": {
+        "complete": 20,
+        "evidence_check_error": 61,
+        "no_coverage_gain": 15,
+        "generation_validation_error": 8,
+        "needs_input": 14,
+        "direct": 1,
+        "generation_abstain": 1
+      }
+    }
+  },
+  "diagnostics": {
+    "failed_assessment_last_error": {
+      "quote_mismatch": 52,
+      "timeout": 3,
+      "schema": 6
+    },
+    "assessment_latency_share": 0.7690502308046756,
+    "same_first_context_ids": 91,
+    "knowledge_n": 92,
+    "failed_knowledge_n": 64,
+    "failed_knowledge_first_context_page_hits": 52.0,
+    "agent_route_parse_failures": 13,
+    "paired_previous_correct_current_wrong": 67,
+    "paired_previous_wrong_current_correct": 5
+  },
+  "examples": [
+    {
+      "id": "r02-2",
+      "question": "只能看见牌面而不能看见所有隐藏信息，与机器人只能向四个方向走，分别限制了强化学习问题的哪个方面？",
+      "requirements": [
+        {
+          "id": "r1",
+          "text": "What aspect of reinforcement learning is limited by the inability to see all hidden information?"
+        },
+        {
+          "id": "r2",
+          "text": "What aspect of reinforcement learning is limited by the restriction of moving in only four directions for a robot?"
+        },
+        {
+          "id": "r3",
+          "text": "How do these limitations affect the design and implementation of reinforcement learning algorithms?"
+        }
+      ],
+      "route_action": "retrieve",
+      "final_action": "abstain",
+      "stop_reason": "generation_validation_error",
+      "answer": "本次答案格式或引用核对未能完成，暂时无法给出可靠答案。",
+      "errors_by_node": [
+        {
+          "node": "generate",
+          "source": "error",
+          "errors": [
+            {
+              "type": "ValueError",
+              "message": "回答必须恰好覆盖 ['r1', 'r2', 'r3']；不能漏答、重复或回答无依据的要点"
+            },
+            {
+              "type": "ValueError",
+              "message": "回答必须恰好覆盖 ['r1', 'r2', 'r3']；不能漏答、重复或回答无依据的要点"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r03-2",
+      "question": "同一个局面每次不一定走同一步，而是按几个动作的概率抽签，这是什么策略？相比固定走法有什么用？",
+      "requirements": [
+        {
+          "id": "r1",
+          "text": "策略名称"
+        }
+      ],
+      "route_action": "retrieve",
+      "final_action": "abstain",
+      "stop_reason": "evidence_check_error",
+      "answer": "本次检索或证据核对未能完成，暂时无法给出可靠答案，请稍后重试。",
+      "errors_by_node": [
+        {
+          "node": "assess",
+          "source": "error",
+          "errors": [
+            {
+              "type": "ValueError",
+              "message": "r1 的 quote 不是资料 1 的有效连续原文，请重新摘录或标为不支持"
+            },
+            {
+              "type": "ValueError",
+              "message": "r1 的 quote 不是资料 1 的有效连续原文，请重新摘录或标为不支持"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dd-01",
+      "question": "你好，先打个招呼就好。",
+      "requirements": [
+        {
+          "id": "r1",
+          "text": "你好，先打个招呼就好。"
+        }
+      ],
+      "route_action": "retrieve",
+      "final_action": "abstain",
+      "stop_reason": "evidence_check_error",
+      "answer": "本次检索或证据核对未能完成，暂时无法给出可靠答案，请稍后重试。",
+      "errors_by_node": [
+        {
+          "node": "route",
+          "source": "error",
+          "errors": [
+            {
+              "type": "ValueError",
+              "message": "1 validation error for RouteDecision\nclarification_question\n  Field required [type=missing, input_value={'action': 'direct', 'rea...', 'requirements': []}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing"
+            },
+            {
+              "type": "ValueError",
+              "message": "1 validation error for RouteDecision\nclarification_question\n  Field required [type=missing, input_value={'action': 'direct', 'rea...', 'requirements': []}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing"
+            }
+          ]
+        },
+        {
+          "node": "assess",
+          "source": "error",
+          "errors": [
+            {
+              "type": "ValueError",
+              "message": "r1 的 quote 不是资料 1 的有效连续原文，请重新摘录或标为不支持"
+            },
+            {
+              "type": "ValueError",
+              "message": "1 validation error for EvidenceAssessment\n  Value error, needs_input=true 必须说明用户缺少的外部信息 [type=value_error, input_value={'points': [{'requirement...ification_question': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/value_error"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "x06-1",
+      "question": "对比房价预测教材和 RAG 教程，数值表格预处理与 PDF 文本清洗是否应使用同一套操作？",
+      "requirements": [
+        {
+          "id": "r1",
+          "text": "房价预测教材中数值表格预处理的步骤"
+        },
+        {
+          "id": "r2",
+          "text": "RAG 教程中数值表格预处理的步骤"
+        },
+        {
+          "id": "r3",
+          "text": "房价预测教材中 PDF 文本清洗的步骤"
+        },
+        {
+          "id": "r4",
+          "text": "RAG 教程中 PDF 文本清洗的步骤"
+        },
+        {
+          "id": "r5",
+          "text": "比较两者在数值表格预处理和 PDF 文本清洗上的异同"
+        },
+        {
+          "id": "r6",
+          "text": "是否建议在房价预测和 RAG 任务中使用相同的预处理操作"
+        },
+        {
+          "id": "r7",
+          "text": "原因分析"
+        }
+      ],
+      "route_action": "retrieve",
+      "final_action": "abstain",
+      "stop_reason": "no_coverage_gain",
+      "answer": "根据当前检索到的资料，无法充分回答该问题。仍缺少的信息：房价预测教材中数值表格预处理的步骤；RAG 教程中数值表格预处理的步骤；房价预测教材中 PDF 文本清洗的步骤；RAG 教程中 PDF 文本清洗的步骤；比较两者在数值表格预处理和 PDF 文本清洗上的异同；是否建议在房价预测和 RAG 任务中使用相同的预处理操作；原因分析。",
+      "errors_by_node": [
+        {
+          "node": "assess",
+          "source": "text",
+          "errors": [
+            {
+              "type": "ValueError",
+              "message": "49 validation errors for EvidenceAssessment\npoints.0.requirement_id\n  Field required [type=missing, input_value={'id': 'r1', 'text': '房...格预处理的步骤'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing\npoints.0.supported\n  Field required [type=missing, input_value={'id': 'r1', 'text': '房...格预处理的步骤'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing\npoints.0.conclusion\n  Field required [type=missing, input_value={'id': 'r1', 'text': '房...格预处理的步骤'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing\npoints.0.citations\n  Field required [type=missing, input_value={'id': '"
+            }
+          ]
+        },
+        {
+          "node": "assess",
+          "source": "text",
+          "errors": [
+            {
+              "type": "ValueError",
+              "message": "49 validation errors for EvidenceAssessment\npoints.0.requirement_id\n  Field required [type=missing, input_value={'id': 'r1', 'text': '房...格预处理的步骤'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing\npoints.0.supported\n  Field required [type=missing, input_value={'id': 'r1', 'text': '房...格预处理的步骤'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing\npoints.0.conclusion\n  Field required [type=missing, input_value={'id': 'r1', 'text': '房...格预处理的步骤'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing\npoints.0.citations\n  Field required [type=missing, input_value={'id': '"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dd-03",
+      "question": "只算一下：17 加 26 等于多少？",
+      "requirements": [
+        {
+          "id": "r1",
+          "text": "只算一下：17 加 26 等于多少？"
+        }
+      ],
+      "route_action": "retrieve",
+      "final_action": "abstain",
+      "stop_reason": "evidence_check_error",
+      "answer": "本次检索或证据核对未能完成，暂时无法给出可靠答案，请稍后重试。",
+      "errors_by_node": [
+        {
+          "node": "route",
+          "source": "error",
+          "errors": [
+            {
+              "type": "ValueError",
+              "message": "1 validation error for RouteDecision\nclarification_question\n  Field required [type=missing, input_value={'action': 'direct', 'rea...['17 加 26 的结果']}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing"
+            },
+            {
+              "type": "ValueError",
+              "message": "1 validation error for RouteDecision\nclarification_question\n  Field required [type=missing, input_value={'action': 'direct', 'rea...['17 加 26 的结果']}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.8/v/missing"
+            }
+          ]
+        },
+        {
+          "node": "assess",
+          "source": "error",
+          "errors": [
+            {
+              "type": "ValueError",
+              "message": "r1 的 quote 不是资料 1 的有效连续原文，请重新摘录或标为不支持"
+            },
+            {
+              "type": "ValueError",
+              "message": "r1 的 quote 不是资料 1 的有效连续原文，请重新摘录或标为不支持"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Single completed dev run per version; multiple changes bundled.",
+    "Page hit is not evidence entailment; first context includes parent expansion and token packing.",
+    "Failed model outputs are not fully persisted; quote mismatch mechanisms require further capture.",
+    "No repaired implementation or post-repair accuracy is claimed."
+  ]
+}
